@@ -8,7 +8,6 @@
 import Foundation
 
 public class KipochiConfigration: NSObject {
-    
     public func getData() {
         print("Test Print")
     }

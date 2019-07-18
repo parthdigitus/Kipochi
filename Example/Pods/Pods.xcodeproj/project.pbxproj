@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		030C2E3491B9DCF105A5CBCD1BD91120 /* Kipochi-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B18DA3D239F568C9A9446DB4937A6834 /* Kipochi-dummy.m */; };
 		29FBB690EE3678A153762D8E29A1FE48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		69F5FDD351CA63829E84EFA4ECEC579B /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC18ED75ABA68CBDB210E10169A3D9 /* ReplaceMe.swift */; };
 		7FE2659486093C48733ADD665C99A232 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		B82DEAF38E6C2106E9114F0174B2D726 /* Pods-Kipochi_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ECF838D00FDFF13AA337FCB63A9D284 /* Pods-Kipochi_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC4EA314FF477FC557CD72DB9441B403 /* Pods-Kipochi_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E16515156D57F87D122599C49159083F /* Pods-Kipochi_Example-dummy.m */; };
 		EEE13199B34E77C37BEDBC756730872C /* Kipochi-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D30DB85A94CE621C83E67DF65B1318C1 /* Kipochi-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA6E340B22E0583C00F10EB9 /* KipochiConfigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E340A22E0583C00F10EB9 /* KipochiConfigration.swift */; };
+		FA73673922E07C400025395F /* KipochiConfigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73673822E07C400025395F /* KipochiConfigration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +33,6 @@
 		2C99E173D2EA96D8FA3C2EEB523C2AE2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		2CB4F9F27D331B2F001C502211C44F59 /* Kipochi-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kipochi-prefix.pch"; sourceTree = "<group>"; };
 		2ECF838D00FDFF13AA337FCB63A9D284 /* Pods-Kipochi_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Kipochi_Example-umbrella.h"; sourceTree = "<group>"; };
-		48BC18ED75ABA68CBDB210E10169A3D9 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Kipochi/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		4A261D8AE6DCAC1E08F9EC9722A3900D /* Pods-Kipochi_Example-Kipochi_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Kipochi_Example-Kipochi_Tests.modulemap"; sourceTree = "<group>"; };
 		4C10522027F1AE8CB524E481A9640B40 /* Kipochi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kipochi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		532A87CEE4DF526D8130C72C375ECD74 /* Pods-Kipochi_Example-Kipochi_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kipochi_Example-Kipochi_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,7 +58,7 @@
 		ED24FA2DE8688F09302BD7FAEADE0655 /* Kipochi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kipochi.xcconfig; sourceTree = "<group>"; };
 		F592E319A2F285226FF2A642DC5E5824 /* Pods-Kipochi_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Kipochi_Example-Info.plist"; sourceTree = "<group>"; };
 		F7C7D1B915081D04D733C0F910B6C260 /* Pods-Kipochi_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Kipochi_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		FA6E340A22E0583C00F10EB9 /* KipochiConfigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KipochiConfigration.swift; sourceTree = "<group>"; };
+		FA73673822E07C400025395F /* KipochiConfigration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KipochiConfigration.swift; path = Kipochi/Classes/KipochiConfigration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +111,7 @@
 		9304E90727FD527296AFEE04DF649683 /* Kipochi */ = {
 			isa = PBXGroup;
 			children = (
-				48BC18ED75ABA68CBDB210E10169A3D9 /* ReplaceMe.swift */,
-				FA6E340A22E0583C00F10EB9 /* KipochiConfigration.swift */,
+				FA73673822E07C400025395F /* KipochiConfigration.swift */,
 				67603D6775958E2827BB587F9D087D58 /* Pod */,
 				EA0403CC50748A3D5F592A59909C4215 /* Support Files */,
 			);
@@ -273,6 +270,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					81A5BCB7EB2EF0E4347B3CE1DBE23844 = {
+						LastSwiftMigration = 1020;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -323,9 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA6E340B22E0583C00F10EB9 /* KipochiConfigration.swift in Sources */,
+				FA73673922E07C400025395F /* KipochiConfigration.swift in Sources */,
 				030C2E3491B9DCF105A5CBCD1BD91120 /* Kipochi-dummy.m in Sources */,
-				69F5FDD351CA63829E84EFA4ECEC579B /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED24FA2DE8688F09302BD7FAEADE0655 /* Kipochi.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -474,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED24FA2DE8688F09302BD7FAEADE0655 /* Kipochi.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -494,6 +497,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
