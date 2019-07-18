@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Kipochi_Example' do
+  pod 'Kipochi', :path => '../'
+
+  target 'Kipochi_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
