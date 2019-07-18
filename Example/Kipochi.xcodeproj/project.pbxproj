@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05C1E9CDE1C5D9A6754523B2 /* Kipochi.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Kipochi.podspec; path = ../Kipochi.podspec; sourceTree = "<group>"; };
+		05C1E9CDE1C5D9A6754523B2 /* Kipochi.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Kipochi.podspec; path = ../Kipochi.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		098EDF8B5D6D43B320DBFD80 /* Pods-Kipochi_Example-Kipochi_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kipochi_Example-Kipochi_Tests.release.xcconfig"; path = "Target Support Files/Pods-Kipochi_Example-Kipochi_Tests/Pods-Kipochi_Example-Kipochi_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		112220BC064EAE04F9748F07 /* Pods_Kipochi_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kipochi_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		320E9982CA4752DCA7CC9165 /* Pods-Kipochi_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kipochi_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Kipochi_Tests/Pods-Kipochi_Tests.debug.xcconfig"; sourceTree = "<group>"; };
