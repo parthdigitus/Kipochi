@@ -1,0 +1,6 @@
+framework module Kipochi {
+  umbrella header "Kipochi-umbrella.h"
+
+  export *
+  module * { export * }
+}

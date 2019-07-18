@@ -1,0 +1,16 @@
+PODS:
+  - Kipochi (0.1.0)
+
+DEPENDENCIES:
+  - Kipochi (from `../`)
+
+EXTERNAL SOURCES:
+  Kipochi:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kipochi: 21c0dec75b6e304a9314b66e813c1f9fe0a7fe96
+
+PODFILE CHECKSUM: a66a36544b12dbf790179ea69554059b7552f64b
+
+COCOAPODS: 1.6.1

@@ -1,0 +1,6 @@
+framework module Pods_Kipochi_Example_Kipochi_Tests {
+  umbrella header "Pods-Kipochi_Example-Kipochi_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
