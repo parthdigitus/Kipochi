@@ -14,8 +14,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let data = KipochiConfigration()
-        data.getData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+            KipochiConfigration().getData(from: self)
+        
     }
 
     override func didReceiveMemoryWarning() {

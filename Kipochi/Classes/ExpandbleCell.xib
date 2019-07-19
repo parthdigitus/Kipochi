@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ExpandbleCell" id="KGk-i7-Jjw" customClass="ExpandbleCell" customModule="Kipochi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="40.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVB-Ah-I7N">
+                        <rect key="frame" x="15" y="0.0" width="290" height="40.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MPESA EXPRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bZ-PX-jZv">
+                                <rect key="frame" x="12" y="11.5" width="121.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzD-cf-KFQ">
+                                <rect key="frame" x="249.5" y="0.0" width="40.5" height="40.5"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40.5" id="qiX-IB-Grv"/>
+                                </constraints>
+                                <state key="normal" image="down-arrow.png"/>
+                                <state key="selected" image="up-arrow.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YzD-cf-KFQ" secondAttribute="trailing" id="1Tu-Wb-btA"/>
+                            <constraint firstItem="YzD-cf-KFQ" firstAttribute="top" secondItem="GVB-Ah-I7N" secondAttribute="top" id="57w-QT-Gff"/>
+                            <constraint firstAttribute="bottom" secondItem="YzD-cf-KFQ" secondAttribute="bottom" id="5gz-fS-r3t"/>
+                            <constraint firstItem="3bZ-PX-jZv" firstAttribute="centerY" secondItem="GVB-Ah-I7N" secondAttribute="centerY" id="OCe-xD-SIB"/>
+                            <constraint firstItem="3bZ-PX-jZv" firstAttribute="leading" secondItem="GVB-Ah-I7N" secondAttribute="leading" constant="12" id="lok-ss-wCI"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="GVB-Ah-I7N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="10a-c5-shD"/>
+                    <constraint firstAttribute="bottom" secondItem="GVB-Ah-I7N" secondAttribute="bottom" id="lcu-Fc-REC"/>
+                    <constraint firstAttribute="trailing" secondItem="GVB-Ah-I7N" secondAttribute="trailing" constant="15" id="mwK-ek-mwn"/>
+                    <constraint firstItem="GVB-Ah-I7N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="nSL-Ge-sKa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnArrow" destination="YzD-cf-KFQ" id="zbY-Se-NpR"/>
+                <outlet property="lblTitle" destination="3bZ-PX-jZv" id="WNw-Uu-spS"/>
+            </connections>
+            <point key="canvasLocation" x="51" y="-78"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="down-arrow.png" width="12" height="12"/>
+        <image name="up-arrow.png" width="12" height="12"/>
+    </resources>
+</document>

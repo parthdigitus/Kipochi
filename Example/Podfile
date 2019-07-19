@@ -2,8 +2,4 @@ use_frameworks!
 
 target 'Kipochi_Example' do
   pod 'Kipochi', :path => '../'
-
-  target 'Kipochi_Tests' do
-    pod 'Kipochi', :path => '../'
-  end
 end
