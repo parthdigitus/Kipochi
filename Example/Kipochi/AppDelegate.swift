@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kipochi
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        KipochiConfigration.shared.AppKey = "4-10fq8b3jrjus0iw1k"
+        KipochiConfigration.shared.SecretKey = "OSPwsK873NfsjuAWxxMyrfhNlJERtJWA"
+        
         // Override point for customization after application launch.
         return true
     }

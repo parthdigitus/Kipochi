@@ -1,6 +1,6 @@
 //
 //  MpesaCell.swift
-//  ProgamaticallyTableView
+//  Kipochi
 //
 //  Created by Admin on 18/07/19.
 //  Copyright © 2019 Sandy. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  DebitCreditCell.swift
-//  ProgamaticallyTableView
+//  Kipochi
 //
 //  Created by Admin on 18/07/19.
 //  Copyright © 2019 Sandy. All rights reserved.
@@ -20,23 +20,18 @@ class DebitCreditCell: UITableViewCell {
     
     var imgcardType: UIImageView!
     var type: CardType = .Unknown
-    var bundle:Bundle!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        let podBundle = Bundle(for: KipochiPaymentController.self)
-        
-        let bundleURL = podBundle.url(forResource: "Kipochi", withExtension: "bundle")
-        bundle = Bundle(url: bundleURL!)!
+
         
         btnPay.layer.cornerRadius = 8
         btnPay.clipsToBounds = true
         
         imgcardType = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: txtCardNumber.frame.size.height))
         imgcardType.contentMode = .center
-        imgcardType.image = UIImage(named: "default.png", in: bundle, compatibleWith: nil)
+        imgcardType.image = UIImage().bundleImage(named: "default.png")
         txtCardNumber.leftView = imgcardType
         txtCardNumber.leftViewMode = .always
         
@@ -71,7 +66,7 @@ extension DebitCreditCell: UITextFieldDelegate {
                 if (matchesRegex(regex: card.regex, text: numberOnly)) {
                     type = card
                     print(type)
-                    self.imgcardType.image = UIImage(named: "\(card).png", in: bundle, compatibleWith: nil)
+                    self.imgcardType.image = UIImage().bundleImage(named: "\(card).png")
                     if type == .MasterCard {
                         self.txtSecurityCode.placeholder = "0000"
                     }
@@ -81,19 +76,19 @@ extension DebitCreditCell: UITextFieldDelegate {
                     break
                 }
                 else {
-                    self.imgcardType.image = UIImage(named: "default.png", in: bundle, compatibleWith: nil)
+                    self.imgcardType.image = UIImage().bundleImage(named: "default.png")
                     self.txtSecurityCode.placeholder = "000"
                 }
             }
             if numberOnly.count > 15{
                 if  luhnCheck(number: numberOnly) {
-                    self.imgCardNumber.image = UIImage(named: "mark-selected.png", in: bundle, compatibleWith: nil)
+                    self.imgCardNumber.image = UIImage().bundleImage(named: "mark-selected.png")
                 }else {
-                    self.imgCardNumber.image = UIImage(named: "mark-unselected.png", in: bundle, compatibleWith: nil)
+                    self.imgCardNumber.image = UIImage().bundleImage(named: "mark-unselected.png")
                 }
             }
             else {
-                self.imgCardNumber.image = UIImage(named: "mark-unselected.png", in: bundle, compatibleWith: nil)
+                self.imgCardNumber.image = UIImage().bundleImage(named: "mark-unselected.png")
             }
             return false
         } else if self.txtMothYear == textField {
@@ -102,19 +97,19 @@ extension DebitCreditCell: UITextFieldDelegate {
             if validate(value: textField.text!) {
                 //Valid
                 if UInt(String(textField.text!.suffix(4)))! > Date().year {
-                    self.imgMonthYear.image = UIImage(named: "mark-selected.png", in: bundle, compatibleWith: nil)
+                    self.imgMonthYear.image = UIImage().bundleImage(named: "mark-selected.png")
                 }
                 else if  UInt(String(textField.text!.prefix(2)))! >= Date().month && UInt(String(textField.text!.suffix(4)))! >= Date().year{
-                    self.imgMonthYear.image = UIImage(named: "mark-selected.png", in: bundle, compatibleWith: nil)
+                    self.imgMonthYear.image = UIImage().bundleImage(named: "mark-selected.png")
                 }
                 else {
-                    self.imgMonthYear.image = UIImage(named: "mark-unselected.png", in: bundle, compatibleWith: nil)
+                    self.imgMonthYear.image = UIImage().bundleImage(named: "mark-unselected.png")
                 }
                 
             }
             else {
                 //InValidate
-                self.imgMonthYear.image = UIImage(named: "mark-unselected.png", in: bundle, compatibleWith: nil)
+                self.imgMonthYear.image = UIImage().bundleImage(named: "mark-unselected.png")
             }
             return false
         } else if self.txtSecurityCode == textField {
@@ -125,13 +120,19 @@ extension DebitCreditCell: UITextFieldDelegate {
                 textField.text = lastText.format("NNN", oldString: text)
             }
             if  textField.text?.count == 3 {
-                self.imgCVV.image = UIImage(named: "mark-selected.png", in: bundle, compatibleWith: nil)
+                self.imgCVV.image = UIImage().bundleImage(named: "mark-selected.png")
             }else {
-                self.imgCVV.image = UIImage(named: "mark-unselected.png", in: bundle, compatibleWith: nil)
+                self.imgCVV.image = UIImage().bundleImage(named: "mark-unselected.png")
             }
             return false
         }
         
         return true
+    }
+}
+
+extension UIImage {
+    func bundleImage(named:String) -> UIImage {
+        return UIImage(named: named, in: Bundle.bundle, compatibleWith: nil) ?? UIImage()
     }
 }

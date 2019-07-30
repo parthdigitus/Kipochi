@@ -6,6 +6,16 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
+
+public protocol KipochiPaymentControllerDelegate {
+    func paymentControllerDidFinish(_ paymentController: KipochiPaymentController)
+    func paymentController(_ paymentController: KipochiPaymentController, didFailWithError error: Error)
+    func paymentControllerDidCancel(_ paymentController: KipochiPaymentController)
+}
+public let baseURL = "http://kipochi.digituscomputing.com/v1/"
+
 
 public class KipochiPaymentController: UIViewController {
 
@@ -20,23 +30,31 @@ public class KipochiPaymentController: UIViewController {
     @IBOutlet weak var btnKipochi: UIButton!
     
     
+    var timer = Timer()
+    let delay = 5.0
     
     var expandedIndex = 0
+    var delegate:KipochiPaymentControllerDelegate?
+    private var checkoutToken:GenerateToken!
+    var email:String!
+    var orderId:String!
+    var amount:String!
+    var customerId:String!
+    var meta:String!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        let podBundle = Bundle(for: KipochiPaymentController.self)
+        self.callAPIForGenerateToken()
         
-        let bundleURL = podBundle.url(forResource: "Kipochi", withExtension: "bundle")
-        let bundle = Bundle(url: bundleURL!)!
-        
-        paymentTable.register(UINib(nibName: "ExpandbleCell", bundle: bundle), forCellReuseIdentifier: "ExpandbleCell")
-        paymentTable.register(UINib(nibName: "MpesaExpressCell", bundle: bundle), forCellReuseIdentifier: "MpesaExpressCell")
-        paymentTable.register(UINib(nibName: "MpesaCell", bundle: bundle), forCellReuseIdentifier: "MpesaCell")
-        paymentTable.register(UINib(nibName: "DebitCreditCell", bundle: bundle), forCellReuseIdentifier: "DebitCreditCell")
+        paymentTable.register(UINib(nibName: "ExpandbleCell", bundle: Bundle.bundle), forCellReuseIdentifier: "ExpandbleCell")
+        paymentTable.register(UINib(nibName: "MpesaExpressCell", bundle: Bundle.bundle), forCellReuseIdentifier: "MpesaExpressCell")
+        paymentTable.register(UINib(nibName: "MpesaCell", bundle: Bundle.bundle), forCellReuseIdentifier: "MpesaCell")
+        paymentTable.register(UINib(nibName: "DebitCreditCell", bundle: Bundle.bundle), forCellReuseIdentifier: "DebitCreditCell")
         
         self.paymentTable.tableFooterView = UIView(frame: .zero)
         
+        let item = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(btnCancelPress(_:)))
+        navigationItem.leftBarButtonItem = item
         
         
         // Do any additional setup after loading the view.
@@ -44,13 +62,12 @@ public class KipochiPaymentController: UIViewController {
 
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
             self.paymentTableHeight.constant = self.paymentTable.contentSize.height
             self.view.layoutIfNeeded()
-        }
     }
     
     @IBAction func btnCancelPress(_ sender: UIBarButtonItem) {
+        delegate?.paymentControllerDidCancel(self)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -58,15 +75,7 @@ public class KipochiPaymentController: UIViewController {
        //Got to website
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
 
@@ -138,7 +147,6 @@ UITableViewDataSource{
             switch indexPath.section {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "MpesaExpressCell", for: indexPath) as! MpesaExpressCell
-                    
                     return cell
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "MpesaCell", for: indexPath) as! MpesaCell
@@ -183,3 +191,105 @@ UITableViewDataSource{
         }
     }
 }
+
+
+extension KipochiPaymentController {
+    @IBAction func btnSendRequestPress(_ sender:UIButton){
+        let indexPath = IndexPath(row: 1, section: 0)
+        let cell = self.paymentTable.cellForRow(at: indexPath) as! MpesaExpressCell
+        if cell.txtNumber.text!.count == 14 {
+          self.callAPIForMPESAExpress(ContactNo: cell.txtNumber.text!)
+        }
+        
+    }
+    
+    @IBAction func btnPaymentPress(_ sender:UIButton){
+        self.callAPIForMPESA()
+    }
+    
+    @IBAction func btnPayPress(_ sender:UIButton){
+        
+    }
+}
+
+extension KipochiPaymentController {
+    
+    func callAPIForGenerateToken(){
+        SVProgressHUD.show()
+        let param = ["orderId":orderId,
+                     "amount": amount,
+                     "customerId": customerId,
+                     "meta": meta] as [String:AnyObject]
+        
+        let headerTokenString = KipochiConfigration.shared.AppKey! + ":" + KipochiConfigration.shared.SecretKey!
+        
+        callDataResponse(urlPath: URLS.checkout_token, method: .post, param: param, headers: ["Authorization" : "Basic " + headerTokenString.toBase64().trimmingCharacters(in: .whitespacesAndNewlines)], modal: GenerateToken.self, completion: { (result) in
+            SVProgressHUD.dismiss()
+            self.checkoutToken = result
+
+        }) { (responce, error) in
+            SVProgressHUD.dismiss()
+        }
+    }
+    
+    //MARK:- Call API for MPESA-Express
+    func callAPIForMPESAExpress(ContactNo:String){
+        
+        let param = ["orderId":orderId,
+                     "orderDisplay": "KCA001A",
+                     "amount": amount,
+                     "msisdn": ContactNo,
+                     "meta": meta] as [String:AnyObject]
+        
+        let headerTokenString = KipochiConfigration.shared.AppKey! + ":" + KipochiConfigration.shared.SecretKey!
+        
+        callDataResponse(urlPath: URLS.checkout_mpesaexpress, method: .post, param: param, headers: ["Authorization" : "Basic " + headerTokenString.toBase64()], modal: MPESAExpressModal.self, completion: { (result) in
+            print(result)
+            
+        }) { (responce, error) in
+            
+        }
+    }
+    
+    //MARK:- Call API for MPESA-Express
+    func callAPIForMPESA(){
+        
+        let param = ["orderId":orderId,
+                     "orderDisplay": "KCA001A",
+                     "amount": amount,
+                     "msisdn": "",
+                     "meta": meta] as [String:AnyObject]
+        
+        let headerTokenString = KipochiConfigration.shared.AppKey! + ":" + KipochiConfigration.shared.SecretKey!
+        
+        callDataResponse(urlPath: URLS.checkout_mpesaexpress, method: .post, param: param, headers: ["Authorization" : "Basic " + headerTokenString.toBase64()], modal: MPESAExpressModal.self, completion: { (result) in
+            print(result)
+            self.timer =  Timer.scheduledTimer(timeInterval: self.delay, target: self, selector: #selector(self.delayedAction), userInfo: nil, repeats: true)
+            
+        }) { (responce, error) in
+            
+        }
+    }
+    
+    @objc func delayedAction() {
+        print("Delay....5 sec")
+        //self.callAPIforCheckoutMPESA(modal: result)
+    }
+    
+    func callAPIforCheckoutMPESA(modal:MPESAExpressModal) {
+        let param = ["billRefNumber": "",
+                     "checkoutId": modal.checkoutId,
+                     "token": "",
+                     "checkoutRequestId": modal.checkoutRequestId] as [String:AnyObject]
+        
+        let headerTokenString = KipochiConfigration.shared.AppKey! + ":" + KipochiConfigration.shared.SecretKey!
+        
+        callDataResponse(urlPath: URLS.checkout_query, method: .post, param: param, headers: ["Authorization" : "Basic " + headerTokenString.toBase64()], modal: MPESAExpressModal.self, completion: { (result) in
+            print(result)
+            
+        }) { (responce, error) in
+            
+        }
+    }
+}
+

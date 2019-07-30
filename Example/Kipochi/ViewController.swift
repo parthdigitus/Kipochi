@@ -19,10 +19,13 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            KipochiConfigration().getData(from: self)
-        
     }
 
+    @IBAction func btnPayPress(_ sender: UIButton) {
+        KipochiConfigration.shared.presentPaymentView(self, email: "parth.bhadaja@digituscomputing.com", orderId: "1", amount: "1", customerId: "C2", meta: "pu-c-1001", delegate: self)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,3 +33,16 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: KipochiPaymentControllerDelegate {
+    func paymentController(_ paymentController: KipochiPaymentController, didFailWithError error: Error) {
+        
+    }
+    
+    func paymentControllerDidCancel(_ paymentController: KipochiPaymentController) {
+        print("Cancel Called")
+    }
+    
+    func paymentControllerDidFinish(_ paymentController: KipochiPaymentController) {
+        
+    }
+}

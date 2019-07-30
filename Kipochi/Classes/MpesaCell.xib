@@ -96,6 +96,9 @@
                         <state key="normal" title=" Confirm Payment ">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="btnPaymentPress:" destination="-2" eventType="touchUpInside" id="58r-Fb-44e"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
