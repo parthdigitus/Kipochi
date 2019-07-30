@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Kipochi'
-  s.version          = '1.3.0'
+  s.version          = '1.4.0'
   s.summary          = 'Kipochi is a SDK for Payment Getway.'
 #  s.swift_versions   = '4.2'
 # This description is used to generate tags and improve search results.
